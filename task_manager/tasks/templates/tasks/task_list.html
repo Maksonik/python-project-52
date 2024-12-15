@@ -1,7 +1,19 @@
 {% extends 'index.html' %}
 {% load i18n %}
+{% load django_bootstrap5 %}
+
 {% block content %}
     <h2>Список задач</h2>
+<div class="card mb-4">
+    <div class="card-body bg-light">
+      <form method="get" class="row g-3">
+        {% bootstrap_form filter.form layout='horizontal' %}
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">{% trans "Показать" %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
     <a href="{% url 'tasks:task_create' %}" class="btn btn-primary mb-3">Создать задачу</a>
     <table class="table table-striped">
     <thead>
