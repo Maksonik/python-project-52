@@ -1,8 +1,9 @@
 from django.db import models
 
-class Status(models.Model):
+class Label(models.Model):
     name = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    tasks = models.ManyToManyField('tasks.Task', related_name='labels', blank=True)
 
     def __str__(self):
         return self.name

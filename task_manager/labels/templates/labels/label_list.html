@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h2>Список меток</h2>
+    <a href="{% url 'labels:label_create' %}" class="btn btn-primary mb-3">Создать метку</a>
+    <ul class="list-group">
+        <table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Дата создания</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for label in labels %}
+        <tr>
+            <td>{{ label.id }}</td>
+            <td>{{ label.name }}</td>
+            <td>{{ label.created_at|date:"d.m.Y H:i" }}</td>
+            <td>
+                <a href="{% url 'labels:label_update' label.pk %}">Изменить</a><br>
+                <a href="{% url 'labels:label_delete' label.pk %}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    </ul>
+{% endblock %}
