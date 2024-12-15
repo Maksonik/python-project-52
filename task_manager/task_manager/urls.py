@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import HomeView
+from .views import HomeView, erorr
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('labels/', include('labels.urls')),
     path('', include('django.contrib.auth.urls')),
     path('', HomeView.as_view(), name='home'),
+    path('error/', erorr, name='error'),
 ]
