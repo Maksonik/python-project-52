@@ -38,7 +38,7 @@ if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-ALLOWED_HOSTS = ["webserver", "127.0.0.1", "https://python-project-52-7p16.onrender.com"]
+ALLOWED_HOSTS = ["*","webserver", "127.0.0.1", "https://python-project-52-7p16.onrender.com"]
 
 
 # Application definition
