@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}
+  {% if view.object.pk %}
+    {% trans "Edit User" %}
+  {% else %}
+    {% trans "Create User" %}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4">
+    {% if view.object.pk %}
+      {% trans "Edit User" %}
+    {% else %}
+      {% trans "Create User" %}
+    {% endif %}
+  </h2>
+
+  <form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+
+    {% bootstrap_form form layout='vertical' %}
+
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary btn-lg">
+        {% trans "Save" %}
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

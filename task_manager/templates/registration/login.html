@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4 text-center">{% trans "Login" %}</h2>
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+
+                {% bootstrap_form form layout='vertical' %}
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">{% trans "Login" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_bootstrap5'
+    'django_bootstrap5',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -93,14 +94,24 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://python_project_52_0why_user:yhffhkafAv7C6A4Oe4mGGfvrnVUnrEWx@dpg-ctf8bcogph6c73fkkvug-a.oregon-postgres.render.com/python_project_52_0why',
-        conn_max_age=600
-    )
-}
 
+if DEBUG:
+    # Используем PostgreSQL для продакшена
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    # Используем SQLite для локальной разработки
+    DATABASES = {
+        'default': dj_database_url.config(
+            # Replace this value with your local database's connection string.
+            default='postgresql://python_project_52_0why_user:yhffhkafAv7C6A4Oe4mGGfvrnVUnrEWx@dpg-ctf8bcogph6c73fkkvug-a.oregon-postgres.render.com/python_project_52_0why',
+            conn_max_age=600
+        )
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -124,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
