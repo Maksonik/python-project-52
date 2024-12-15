@@ -30,7 +30,10 @@
                     <a class="nav-link" href="{% url 'labels:label_list' %}">Метки</a>
                 </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
+                        <form method="POST" action="{% url 'logout' %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-link">{% trans "Logout" %}</button>
+                        </form>
                     </li>
                 {% else %}
                     <li class="nav-item">
@@ -54,6 +57,14 @@
             {% endfor %}
         {% endif %}
         {% block content %}
+        <div class="card my-4">
+            <div class="card-body p-5 bg-light">
+                <div class="display-4">Привет от Хекслета!</div>
+                <p class="lead">Практические курсы по программированию</p>
+                <hr>
+                <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io">{% trans "Узнать больше" %}</a>
+            </div>
+        </div>
         {% endblock %}
     </div>
 
