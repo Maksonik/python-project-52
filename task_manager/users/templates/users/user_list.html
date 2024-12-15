@@ -22,8 +22,8 @@
           <tr>
             <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
-            <td>{{ user.full_name }}</td>
-            <td>{{ user.date_created|date:"d.m.Y H:i" }}</td>
+            <td>{{ user.get_full_name }}</td>
+            <td>{{ user.assigned_to|date:"d.m.Y H:i" }}</td>
             <td class="text-end">
               <a href="{% url 'user_update' user.id %}" class="btn btn-sm btn-primary">Изменить</a>
               <a href="{% url 'user_delete' user.id %}" class="btn btn-sm btn-danger">Удалить</a>
