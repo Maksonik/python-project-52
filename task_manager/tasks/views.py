@@ -1,9 +1,11 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+
 # Create your views here.
 from django.views.generic import DetailView
 from django_filters.views import FilterView
+
 from task_manager.mixins import CustomLoginMixin
 from task_manager.tasks.models import Task
 from task_manager.views import (
