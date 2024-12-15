@@ -8,7 +8,7 @@ migrate:
 		${MANAGE} migrate
 
 lint:
-	poetry run isort --profile black . && \
+	poetry run isort task_manager/tests && \
 	poetry run flake8 --exclude=migrations,admin.py,settings.py task_manager
 
 test:
